@@ -62,9 +62,7 @@ $(function(){
 
             // 正确跳转
               if(info.success){
-
                 location.href = 'index.html';
-                
               }
 
               // console.log(info);

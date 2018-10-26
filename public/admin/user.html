@@ -27,7 +27,7 @@
     <div class="nav">
       <ul>
         <li>
-          <a href="user.html">
+          <a class="active" href="user.html">
             <i class="glyphicon glyphicon-user"></i>
             <span>用户管理</span>
           </a>
@@ -65,11 +65,36 @@
         <li>
           <a href="#">管理系统</a>
         </li>
-        <li class="active">首页</li>
+        <li class="active">用户管理</li>
       </ol>
-      <div class="pull-left cont-l" id="cont_left"></div>
-      <div class="pull-right cont-r" id="cont_right"></div>
+      <table class="table table-bordered text-center">
+        <thead>
+          <tr>
+            <th width="10%">序号</th>
+            <th width="30%">用户名</th>
+            <th width="30%">手机号</th>
+            <th width="20%">状态</th>
+            <th width="10%">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+            <td>1</td>
+            <td>itcast</td>
+            <td>19324324324</td>
+            <td>正常</td>
+            <td>
+              <button class="btn btn-success">正常</button>
+              <button class="btn btn-danger">禁用</button>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+      <ul id="page">
+
+      </ul>
     </div>
+
   </div>
 
 
@@ -93,22 +118,64 @@
           <button id="primary" type="button" class="btn btn-primary">退出</button>
         </div>
       </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
 
+    </div>
+
+  </div>
+
+  <!-- 禁用用户启用用户的模态框 -->
+  <div class="modal fade bs-example-modal-sm" id="userModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p class="text-danger">
+              <span class="glyphicon glyphicon-info-sign"></span>您确定要执行此操作吗？</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button id="primary" type="button" class="btn btn-primary primary">确定</button>
+          </div>
+        </div>
+  
+      </div>
+  
+    </div>
+
+  <!-- 准备模板引擎 -->
+  <script type="text/html" id="tmp">
+      {{ each rows v i }}  
+      <tr>
+          <td>{{ (page-1)*size+i+1 }}</td>
+          <td>{{ v.username }}</td>
+          <td>{{ v.mobile }}</td>
+          <td>{{ v.isDelete === 1 ? '正常':'禁用' }}</td>
+          <td data-id={{v.id}}>
+            {{ if v.isDelete !== 1 }}
+            <button class="btn btn-success">正常</button>
+            {{ else }}
+            <button class="btn btn-danger">禁用</button>
+            {{ /if }}
+          </td>
+        </tr>
+      {{ /each }}
+  </script>
 
 
   <script src="./lib/jquery/jquery.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.js"></script>
   <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
-  <script src="./lib/echarts/echarts.min.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
   <script src="./js/common.js"></script>
   <script src="./js/login.js"></script>
-  <script src="./js/index.js"></script>
+  <script src="./js/user.js"></script>
 
 </body>
 
