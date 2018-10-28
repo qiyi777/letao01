@@ -1,0 +1,93 @@
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.lt {
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  height: 100%;
+  background: #fff;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  padding: 45px 0 55px;
+}
+.lt_top {
+  height: 45px;
+  position: absolute;
+  background: #006699;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.lt_top .left,
+.lt_top .right {
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  top: 0;
+}
+.lt_top .left a,
+.lt_top .right a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 45px;
+  color: #fff;
+}
+.lt_top .left {
+  left: 0;
+}
+.lt_top .right {
+  right: 0;
+}
+.lt_top h4 {
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  line-height: 45px;
+  margin: 0;
+}
+.lt_footer {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  height: 55px;
+  background: #006699;
+}
+.lt_footer ul li {
+  text-align: center;
+  float: left;
+  width: 25%;
+  height: 100%;
+}
+.lt_footer ul li a {
+  color: #fff;
+  display: block;
+  height: 100%;
+  padding-top: 8px;
+}
+.lt_footer ul li a p {
+  color: #fff;
+  font-size: 12px;
+}
+.lt_footer ul li.active a {
+  color: orange;
+}
+.lt_footer ul li.active p {
+  color: orange;
+}
+.lt_container {
+  position: relative;
+  height: 100%;
+}
