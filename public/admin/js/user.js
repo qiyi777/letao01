@@ -4,8 +4,6 @@ $(function () {
   var page = 1
   var pageSize = 5
 
-
-
   function rander() {
 
     //使用ajax获取数据

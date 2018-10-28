@@ -14,3 +14,46 @@ ul,ol {
   padding: 0;
   margin: 0;
 }
+.add {
+  margin-bottom: 20px;
+}
+
+.default {
+  margin-bottom: 20px;
+}
+.second td img {
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+}
+
+.two {
+  margin-top: 15px;
+}
+
+.file {
+  width: 82px;
+  height: 34px;
+  position: relative;
+  margin-bottom: 15px;
+}
+.file input {
+  width: 82px;
+  height: 34px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.file:hover button {
+  background: #e6e6e6;
+  border-color: #adadad;
+  color: #333;
+}
+.imgs img {
+  width: 100px;
+  height: 100px;
+}
+

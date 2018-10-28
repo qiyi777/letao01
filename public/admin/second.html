@@ -39,7 +39,7 @@
           </a>
           <div class="classfax">
             <a href="first.html">一级分类</a>
-            <a  class="active" href="second.html">二级分类</a>
+            <a class="active" href="second.html">二级分类</a>
           </div>
         </li>
         <li>
@@ -53,46 +53,164 @@
   </div>
   <div class="lt_right">
     <div class="lt_topbar">
-      <a class="pull-left justify" href="javascript:;"><i class="glyphicon glyphicon-align-justify"></i></a>
-      <a class="pull-right out" href="javascript:;"><i class="glyphicon glyphicon-log-out"></i></a>
+      <a class="pull-left justify" href="javascript:;">
+        <i class="glyphicon glyphicon-align-justify"></i>
+      </a>
+      <a class="pull-right out" href="javascript:;">
+        <i class="glyphicon glyphicon-log-out"></i>
+      </a>
     </div>
     <div class="content">
       <ol class="breadcrumb">
-          <li><a href="#">管理系统</a></li>
-          <li class="active">首页</li>
-        </ol>
+        <li>
+          <a href="#">管理系统</a>
+        </li>
+        <li>
+          <a href="#">分类管理</a>
+        </li>
+        <li class="active">二级分类</li>
+      </ol>
+      <div class="default">
+        <button type="button" class="btn btn-default">添加分类</button>
       </div>
+      <table class="second table table-bordered table-hover text-center">
+        <thead>
+          <tr>
+            <th width="10%">序号</th>
+            <th width="30%">一级分类名称</th>
+            <th width="30%">二级分类名称</th>
+            <th width="30%">二级分类LOGO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 挖个坑 -->
+        </tbody>
+      </table>
+
+      <!-- 在3点几版本  必须使用UL作为分页标签的容器 -->
+      <div class="pull-right">
+        <ul class="page">
+
+        </ul>
+      </div>
+    </div>
   </div>
 
 
 
   <!-- 模态框 -->
   <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">温馨提示</h4>
-          </div>
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">温馨提示</h4>
+        </div>
+        <div class="modal-body">
+          <p class="text-danger">
+            <span class="glyphicon glyphicon-info-sign"></span>您确定要退出后台管理系统吗？</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button id="primary" type="button" class="btn btn-primary">退出</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 添加分类 -->
+  <div class="modal fade bs-example-modal-sm" id="secondModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">添加分类</h4>
+        </div>
+        <form>
           <div class="modal-body">
-            <p class="text-danger"><span class="glyphicon glyphicon-info-sign"></span>您确定要退出后台管理系统吗？</p>
+            <!-- 下拉菜单 -->
+            <div class="dropdown form-group">
+              <input type="hidden" name="categoryId" class="form-control categoryId">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span class="care">请选择一级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul id="down" class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <!-- 挖个坑 -->
+              </ul>
+            </div>
+
+            <!-- 添加二级分类表单 -->
+            <div class="form-group two">
+              <input type="text" name="brandName" class="form-control" placeholder="请输入二级分类名称">
+            </div>
+
+            <!-- 上传分类 -->
+            <div class="file form-group">
+              <button type="button" class="btn btn-default">上传图片</button>
+              <input type="file" id="fileupload" name="pic1" data-url="/category/addSecondCategoryPic" class="btn btn-default">
+            </div>
+
+            <!-- 图片显示区域 -->
+            <div class="imgs form-group">
+              <img src="./images/none.png" alt="">
+              <!-- 品牌logo图片地址 -->
+              <input type="hidden" name="brandLogo" class="form-control brandLogo">
+            </div>
+
+            <!-- hot -->
+            <div class="form-group two">
+              <input type="hidden" name="hot" class="form-control" value="1">
+            </div>
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button id="primary" type="button" class="btn btn-primary">退出</button>
+            <button type="submit" class="btn btn-primary">添加</button>
           </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+        </form>
+      </div>
+    </div>
+  </div>
 
+
+  <!-- 二级分类表格模板引擎 -->
+  <script type="text/html" id="tmp">
+    {{ each rows v i }}
+      <tr>
+        <td>{{ (page-1)*size+i+1 }}</td>
+        <td>{{ v.categoryName }}</td>
+        <td>{{ v.brandName }}</td>
+        <td><img src="{{ v.brandLogo?v.brandLogo:'./images/none.png' }}" alt=""></td>
+      </tr>
+    {{ /each }}
+  </script>
+
+  <!-- 渲染一级分类模板引擎  并添加到Li 中 -->
+  <script type="text/html" id="tpl">
+    {{ each rows v i }}
+      <li data-id="{{ v.id }}">
+        <a href="#">{{ v.categoryName }}</a>
+      </li>
+    {{ /each }}
+  </script>
 
 
   <script src="./lib/jquery/jquery.js"></script>
   <script src="./lib/bootstrap/js/bootstrap.js"></script>
   <script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
+  <script src="./lib/artTemplate/template-web.js"></script>
   <script src="./lib/nprogress/nprogress.js"></script>
+  <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
   <script src="./js/common.js"></script>
-  <script src="./js/login.js"></script>
+  <script src="./js/second.js"></script>
 
 </body>
 
